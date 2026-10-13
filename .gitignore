@@ -1,0 +1,11 @@
+# Le produit a son propre dépôt Git : il ne fait pas partie du journal
+exampredict-ai/
+
+# Fichiers générés automatiquement par Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environnements virtuels
+.venv/
+venv/
