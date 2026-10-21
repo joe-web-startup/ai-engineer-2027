@@ -1,0 +1,11 @@
+Lina;14
+Bilal;9.5
+Chloé;17
+Yanis;abc
+Sarah;
+Tom;22
+Inès;12
+Jules;8
+mauvaise ligne sans point-virgule
+Emma;15.5
+
