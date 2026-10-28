@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F1.DAY2.WEEK3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#ffffff; --ink:#1a1d2b; --muted:#5b6175; --rule:#d9dce6;
+  --navy:#1f3a6e; --navy-soft:#eaf0fa; --red:#a3283a; --red-soft:#fbecee;
+  --green:#2c6b4f; --green-soft:#e8f3ee; --code-bg:#f1f2f7;
+  --f-display:"Newsreader",Georgia,serif; --f-body:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+@page{size:A4;margin:16mm 15mm}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:10.5pt;line-height:1.6}
+.wrap{max-width:46rem;margin:0 auto;padding:0 4px}
+header{padding-bottom:16px;border-bottom:2px solid var(--ink);margin-bottom:6px}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:.3rem 1.1rem}
+h1{font-family:var(--f-display);font-weight:700;font-size:2.3rem;line-height:1.1;margin:.5rem 0 .4rem}
+.lead{color:var(--muted);margin:0}
+nav.toc{margin:16px 0 4px;font-size:.9rem}
+nav.toc ol{margin:0;padding-left:1.3rem;columns:2;column-gap:2rem}
+h2{font-family:var(--f-display);font-weight:600;font-size:1.5rem;margin:30px 0 8px;padding-top:8px;border-top:1px solid var(--rule);break-after:avoid}
+h2 .num{color:var(--navy);margin-right:.45rem}
+h3{font-family:var(--f-display);font-weight:600;font-size:1.12rem;margin:18px 0 6px;break-after:avoid}
+p{margin:.5rem 0}
+code{font-family:var(--f-mono);font-size:.88em;background:var(--code-bg);padding:.05em .3em;border-radius:3px}
+pre{font-family:var(--f-mono);font-size:.82rem;line-height:1.5;background:var(--code-bg);padding:11px 14px;border-radius:4px;margin:.7rem 0;white-space:pre-wrap;break-inside:avoid}
+pre code{background:none;padding:0}
+.c{color:var(--muted)} .ok{color:var(--green)} .ko{color:var(--red)}
+.env{border-left:3px solid var(--navy);background:var(--navy-soft);padding:9px 14px;margin:14px 0;border-radius:0 4px 4px 0;break-inside:avoid}
+.env>.tag{font-family:var(--f-display);font-weight:700;display:block;margin-bottom:2px}
+.env>.tag em{font-weight:400}
+.env.prop{background:transparent;border-color:var(--ink)}
+.env.piege{border-color:var(--red);background:var(--red-soft)} .env.piege>.tag{color:var(--red)}
+.env.ml{border-color:var(--green);background:var(--green-soft)} .env.ml>.tag{color:var(--green)}
+.clair{color:var(--muted);font-size:.95rem} .clair b{color:var(--ink)}
+.ph{color:var(--navy);font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:10px 0;break-inside:avoid;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--ink)}
+details{border:1px solid var(--rule);border-radius:4px;margin:10px 0;break-inside:avoid}
+summary{padding:8px 12px;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+details .body{padding:0 14px 8px;border-top:1px solid var(--rule)}
+.lvl{font-weight:400;font-size:.78rem;color:var(--muted);margin-left:.6rem}
+.recap{counter-reset:r;list-style:none;padding:0}
+.recap li{counter-increment:r;display:grid;grid-template-columns:1.8rem 1fr;gap:.3rem;padding:6px 0;border-bottom:1px solid var(--rule);break-inside:avoid}
+.recap li::before{content:counter(r);font-family:var(--f-display);font-weight:700;color:var(--navy);font-size:1.1rem}
+footer{margin-top:30px;padding-top:10px;border-top:2px solid var(--ink);font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow"><span>F1 · DAY2 · WEEK3</span><span>Semaine 3 · Jour 2 · Fiche 1</span><span>Parcours AI/ML Engineer</span><span>Lundi 26 octobre 2026</span></div>
+  <h1>Ton premier modèle de Machine Learning avec scikit-learn</h1>
+  <p class="lead">Fabriquer des exemples X et y, entraîner une régression linéaire, la tester honnêtement sur des années jamais vues, puis prédire le bac 2027 en physique-chimie, maths et SVT. Chaque notion est énoncée, expliquée « en clair », puis appliquée à ExamPredict AI.</p>
+  <nav class="toc"><ol>
+    <li>Du vote au modèle</li><li>scikit-learn, X et y</li><li>Fabriquer les exemples</li><li>La régression linéaire</li>
+    <li>Train / test dans le temps</li><li>Évaluer : l'erreur et le pif</li><li>Prédire 2027</li><li>Une fonction pour 3 matières</li>
+    <li>Les résultats</li><li>Données et vérification</li><li>Jour 1 / jour 2 : quand les stats battent le ML</li><li>Exercices corrigés</li><li>À savoir par cœur</li>
+  </ol></nav>
+</header>
+
+<h2><span class="num">1.</span>Du vote au modèle</h2>
+<p>Au Day 1, la règle était écrite à la main : « l'année d'avant pèse 1, celle d'avant 0,8… ». Le 0,8 était choisi au feeling.</p>
+<div class="env"><span class="tag">Définition 1.1 <em>(apprentissage automatique)</em></span>
+<p>Un modèle de <b>Machine Learning</b> trouve lui-même sa règle à partir d'<b>exemples</b> : on lui montre des situations passées et leur résultat, il ajuste ses <b>paramètres</b> pour reproduire ces résultats au mieux.</p>
+<p class="clair"><b>En clair :</b> on ne lui donne pas la formule, on lui donne des exemples et il <b>devine la formule</b>.</p></div>
+
+<h2><span class="num">2.</span>scikit-learn, X et y</h2>
+<p><b>scikit-learn</b> <span class="ph">(saï-kit-leurne)</span> est la bibliothèque de ML la plus utilisée en Python. Installation, une seule fois :</p>
+<pre><code>py -m pip install scikit-learn</code></pre>
+<table><thead><tr><th>Nom</th><th>Rôle</th><th>Dans ExamPredict</th></tr></thead><tbody>
+<tr><td><b>X</b> <span class="ph">(grand ixe)</span></td><td>les <b>entrées</b> (features)</td><td>combien de fois le chapitre est tombé les 3 années d'avant</td></tr>
+<tr><td><b>y</b> <span class="ph">(petit i-grec)</span></td><td>la <b>cible</b> à deviner</td><td>combien de fois il tombe l'année suivante</td></tr></tbody></table>
+
+<h2><span class="num">3.</span>Fabriquer les exemples</h2>
+<pre><code>compte = pd.crosstab(df["annee"], df["famille"])   <span class="c"># tableau croisé : années × chapitres  (cross-tab)</span>
+annees = list(compte.index)
+lignes = []
+for i in range(3, len(annees)):                     <span class="c"># à partir de la 4e année</span>
+    for famille in compte.columns:
+        lignes.append({
+            "annee": annees[i],
+            "avant_1": compte.loc[annees[i - 1], famille],   <span class="c"># .loc = lire une case (point lok)</span>
+            "avant_2": compte.loc[annees[i - 2], famille],
+            "avant_3": compte.loc[annees[i - 3], famille],
+            "y": compte.loc[annees[i], famille],
+        })
+data = pd.DataFrame(lignes)</code></pre>
+<div class="env"><span class="tag">Définition 3.1 <em>(feature engineering)</em></span>
+<p>Transformer des données brutes en colonnes utiles pour le modèle s'appelle le <b>feature engineering</b> <span class="ph">(fi-tcheur èn-dji-ni-ringue)</span>. Ici, les « 3 années d'avant » sont des features que nous avons inventées.</p>
+<p class="clair"><b>En clair :</b> on prépare les ingrédients avant de cuisiner. Un bon modèle avec de mauvais ingrédients donne un mauvais plat.</p></div>
+
+<h2><span class="num">4.</span>La régression linéaire</h2>
+<div class="env"><span class="tag">Définition 4.1 <em>(régression linéaire)</em></span>
+<p>Une <b>régression linéaire</b> <span class="ph">(ré-gré-sion li-né-èr)</span> prédit y par une somme pondérée des entrées :</p>
+<p style="text-align:center"><b>y ≈ a × avant_1 + b × avant_2 + c × avant_3 + d</b></p>
+<p>L'entraînement choisit a, b, c, d qui rendent les erreurs sur les exemples les plus petites possible.</p>
+<p class="clair"><b>En clair :</b> le modèle cherche <b>combien chaque année passée doit compter</b>.</p></div>
+<pre><code>from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()          <span class="c"># un modèle vide</span>
+model.fit(X[train], y[train])       <span class="c"># LA ligne du ML : il apprend  (fite)</span>
+model.coef_                         <span class="c"># les poids a, b, c trouvés  (ko-èf)</span>
+model.predict(X[test])              <span class="c"># il devine  (pri-dikte)</span></code></pre>
+
+<h2><span class="num">5.</span>Train / test dans le temps</h2>
+<div class="env"><span class="tag">Définition 5.1</span>
+<p>On sépare les exemples en deux : le <b>train</b> <span class="ph">(tréïne)</span> pour apprendre, le <b>test</b> <span class="ph">(tèsste)</span> pour vérifier sur des données que le modèle n'a <b>jamais vues</b>.</p></div>
+<pre><code>train = data["annee"] &lt; 2024     <span class="c"># apprendre sur le passé</span>
+test  = data["annee"] &gt;= 2024    <span class="c"># examen sur 2024, 2025, 2026</span></code></pre>
+<div class="env piege"><span class="tag">Piège 5.2 <em>(couper au hasard)</em></span>
+<p>Quand les données suivent le <b>temps</b>, on coupe <b>dans le temps</b>, jamais au hasard. Sinon le modèle voit 2025 pour prédire 2024 : c'est de la triche, et son score est faux.</p></div>
+
+<h2><span class="num">6.</span>Évaluer : l'erreur et le pif</h2>
+<div class="env"><span class="tag">Définition 6.1 <em>(erreur absolue moyenne, MAE)</em></span>
+<p>La <b>MAE</b> <span class="ph">(mîne ab-so-lioute éreur)</span> est la moyenne des écarts entre la vraie valeur et la prédiction. MAE = 0,5 : le modèle se trompe en moyenne d'un demi-exercice.</p></div>
+<div class="env prop"><span class="tag">Règle 6.2 <em>(toujours comparer au pif)</em></span>
+<p>Un modèle n'est utile que s'il bat une <b>référence simple</b> (baseline) : ici, deviner toujours la moyenne. Erreur du modèle &lt; erreur au pif → le modèle apporte quelque chose.</p></div>
+<pre><code>from sklearn.metrics import mean_absolute_error
+mean_absolute_error(y[test], pred)                              <span class="c"># erreur du modèle</span>
+mean_absolute_error(y[test], [y[train].mean()] * test.sum())    <span class="c"># erreur au pif</span></code></pre>
+
+<h2><span class="num">7.</span>Prédire 2027</h2>
+<pre><code>model.fit(X, y)                                 <span class="c"># réentraîner sur toutes les années</span>
+futur = pd.DataFrame({
+    "avant_1": compte.loc[annees[-1]],          <span class="c"># -1 = dernière année (2026)</span>
+    "avant_2": compte.loc[annees[-2]],
+    "avant_3": compte.loc[annees[-3]],
+})
+futur["prediction_2027"] = model.predict(futur).round(2)</code></pre>
+<p class="clair"><b>Lecture :</b> environ 1 ou plus → très probable ; environ 0,5 → une chance sur deux ; proche de 0 → peu probable.</p>
+
+<h2><span class="num">8.</span>Une fonction pour 3 matières</h2>
+<pre><code>tout = pd.read_csv("data/chapitres_bac.csv")
+
+def predire_matiere(matiere):
+    df = tout[tout["matiere"] == matiere]       <span class="c"># filtrer une matière</span>
+    ...                                         <span class="c"># tout le modèle, décalé dans la fonction</span>
+
+for matiere in ["physique-chimie", "maths", "svt"]:
+    predire_matiere(matiere)</code></pre>
+<div class="env prop"><span class="tag">Règle 8.1</span>
+<p>On écrit le modèle <b>une fois</b> dans une fonction, et on le réutilise. Ajouter une matière revient à ajouter des lignes au CSV.</p></div>
+
+<h2><span class="num">9.</span>Les résultats</h2>
+<table><thead><tr><th>Matière</th><th>Poids appris</th><th>Erreur modèle</th><th>Erreur pif</th><th>Top 2027</th></tr></thead><tbody>
+<tr><td>Physique-chimie</td><td>0,30 · 0,19 · 0,27</td><td>0,50</td><td>0,60</td><td>Mécanique (1,11), Chimie organique, Ondes et optique, Cinétique</td></tr>
+<tr><td>Maths</td><td>0,51 · 0,14 · 0,06</td><td><b>0,76</b></td><td>1,22</td><td>Probabilités (2,73), Fonctions, Géométrie, Suites, Intégrales, Équations différentielles</td></tr>
+<tr><td>SVT</td><td>0,29 · 0,17 · 0,12</td><td>0,59</td><td>0,64</td><td>Biologie végétale (0,97), Système nerveux, Climat</td></tr></tbody></table>
+<div class="env ml"><span class="tag">Dans le métier</span>
+<p>Chaque matière a sa « personnalité » : en maths, l'année d'avant pèse 0,51, ce qui est tombé l'an dernier retombe. Et le modèle a découvert seul que les <b>nombres complexes</b> ne tombent plus (0,18) : ils ont été retirés du programme.</p></div>
+
+<h2><span class="num">10.</span>Données et vérification</h2>
+<div class="env piege"><span class="tag">Piège 10.1 <em>(sources contradictoires)</em></span>
+<p>La liste maths de ChatGPT disait « 2021 : épreuves annulées », alors que les listes physique et SVT donnaient des sujets 2021. Vérification faite : les épreuves de spécialité 2021 ont bien été <b>annulées</b> (Covid) et remplacées par le contrôle continu. Les lignes 2021 ont été supprimées.</p></div>
+<div class="env prop"><span class="tag">Choix de nettoyage</span>
+<p>Exercice à plusieurs thèmes (« Fonctions et intégrales ») → une ligne par chapitre. Exercice « au choix » → les deux thèmes comptent. Exercice « à vérifier » → ignoré.</p></div>
+
+<h2><span class="num">11.</span>Jour 1 / jour 2 : quand les stats battent le ML</h2>
+<p>Depuis la réforme, il y a deux sujets par an. Un modèle par jour, testé sur 2026, donne : physique 0,39 contre 0,42 au pif, SVT 0,47 contre 0,48, maths 0,35 contre 0,25 (pire que le pif).</p>
+<div class="env prop"><span class="tag">Proposition 11.1</span>
+<p>Avec trop peu d'exemples (5 années par jour), un modèle ne peut pas apprendre : de simples <b>statistiques</b> (moyenne, médiane, écart-type) font aussi bien ou mieux. Un ingénieur honnête utilise alors les stats.</p></div>
+<div class="env ml"><span class="tag">Dans le métier</span>
+<p>Le remède n'est pas un modèle plus compliqué, c'est <b>plus de données</b> : les autres sessions de chaque année (Centres étrangers, Amérique du Nord, Asie, Polynésie…) donnent 6 à 8 sujets par an au lieu d'un.</p></div>
+<table><thead><tr><th>2027</th><th>Jour 1</th><th>Jour 2</th></tr></thead><tbody>
+<tr><td>Physique-chimie</td><td>Mécanique · Chimie organique · Ondes et optique</td><td>Mécanique · Chimie organique · Ondes et optique</td></tr>
+<tr><td>Maths</td><td>Probabilités · Fonctions · Suites · Géométrie</td><td>Fonctions · Probabilités · Suites · Géométrie</td></tr>
+<tr><td>SVT</td><td>Climat · Biologie végétale</td><td>Biologie végétale · Climat</td></tr></tbody></table>
+<p class="clair">Les numéros d'exercice suivent l'ordre de probabilité, pas l'ordre réel du sujet, qui ne suit aucune logique.</p>
+
+<h2><span class="num">12.</span>Exercices corrigés</h2>
+<details open><summary>Exercice 1 <span class="lvl">★ X et y</span></summary><div class="body">
+<p>Pour prédire la note d'un élève à partir de ses heures de révision et de sommeil, que valent X et y ?</p>
+<p><b>Corrigé.</b> X = les colonnes révision et sommeil (les entrées) ; y = la note (la cible).</p></div></details>
+<details open><summary>Exercice 2 <span class="lvl">★ lire une prédiction</span></summary><div class="body">
+<p>Les poids appris sont [0,5 · 0,2 · 0,1], le bonus vaut 0,1. Un chapitre est tombé 2, 1 et 0 fois les 3 dernières années. Prédiction ?</p>
+<p><b>Corrigé.</b> 0,5 × 2 + 0,2 × 1 + 0,1 × 0 + 0,1 = 1,3 exercice attendu.</p></div></details>
+<details open><summary>Exercice 3 <span class="lvl">★★ train / test</span></summary><div class="body">
+<p>Pourquoi ne pas mélanger les années au hasard avant de couper en train et test ?</p>
+<p><b>Corrigé.</b> Le modèle verrait des années futures pendant l'apprentissage. Son erreur de test serait trop optimiste : il aurait triché (Piège 5.2).</p></div></details>
+<details open><summary>Exercice 4 <span class="lvl">★★ baseline</span></summary><div class="body">
+<p>Un modèle a une erreur de 0,9 ; deviner la moyenne donne 0,8. Que conclure ?</p>
+<p><b>Corrigé.</b> Le modèle est inutile : il fait pire que le pif. Il faut plus de données ou de meilleures features, ou garder la baseline.</p></div></details>
+<details open><summary>Exercice 5 <span class="lvl">★★★ données</span></summary><div class="body">
+<p>Deux sources donnent des informations contradictoires sur l'année 2021. Que fait un ingénieur ML ?</p>
+<p><b>Corrigé.</b> Il vérifie avec une source fiable et indépendante, corrige le jeu de données, relance le modèle et note la correction (ici, dans le message de commit).</p></div></details>
+
+<h2><span class="num">13.</span>À savoir par cœur</h2>
+<ol class="recap">
+  <li><span>Un modèle de ML apprend sa règle à partir d'exemples : <code>model.fit(X, y)</code>.</span></li>
+  <li><span><b>X</b> = les entrées (features), <b>y</b> = la cible à deviner.</span></li>
+  <li><span>Le <b>feature engineering</b> prépare les colonnes utiles (ici : les 3 années d'avant).</span></li>
+  <li><span>La <b>régression linéaire</b> prédit une somme pondérée ; <code>model.coef_</code> donne les poids appris.</span></li>
+  <li><span>Données dans le temps → on coupe train / test <b>dans le temps</b>.</span></li>
+  <li><span>La <b>MAE</b> mesure l'erreur moyenne ; un modèle doit battre le pif.</span></li>
+  <li><span>Après l'examen, on réentraîne sur tout, puis <code>model.predict</code> sur le futur.</span></li>
+  <li><span>Une <b>fonction</b> rend le modèle réutilisable pour n'importe quelle matière.</span></li>
+  <li><span>On vérifie les données contradictoires (2021 annulé) avant de faire confiance au modèle.</span></li>
+  <li><span>Trop peu de données → les stats battent le ML ; le remède, c'est plus de données.</span></li>
+</ol>
+
+<footer>F1.DAY2.WEEK3 · Semaine 3 « Premier modèle de Machine Learning » · Code : exampredict-ai/src/modele_2027.py et predire_par_jour.py · Prochaine fiche F1.DAY3.WEEK3 : la classification.</footer>
+</div>
+</body>
+</html>

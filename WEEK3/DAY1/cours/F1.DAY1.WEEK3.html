@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F1.DAY1.WEEK3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#ffffff; --ink:#1a1d2b; --muted:#5b6175; --rule:#d9dce6;
+  --navy:#1f3a6e; --navy-soft:#eaf0fa; --red:#a3283a; --red-soft:#fbecee;
+  --green:#2c6b4f; --green-soft:#e8f3ee; --code-bg:#f1f2f7;
+  --f-display:"Newsreader",Georgia,serif; --f-body:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+@page{size:A4;margin:16mm 15mm}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:10.5pt;line-height:1.6}
+.wrap{max-width:46rem;margin:0 auto;padding:0 4px}
+header{padding-bottom:16px;border-bottom:2px solid var(--ink);margin-bottom:6px}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:.3rem 1.1rem}
+h1{font-family:var(--f-display);font-weight:700;font-size:2.3rem;line-height:1.1;margin:.5rem 0 .4rem}
+.lead{color:var(--muted);margin:0}
+nav.toc{margin:16px 0 4px;font-size:.9rem}
+nav.toc ol{margin:0;padding-left:1.3rem;columns:2;column-gap:2rem}
+h2{font-family:var(--f-display);font-weight:600;font-size:1.5rem;margin:30px 0 8px;padding-top:8px;border-top:1px solid var(--rule);break-after:avoid}
+h2 .num{color:var(--navy);margin-right:.45rem}
+h3{font-family:var(--f-display);font-weight:600;font-size:1.12rem;margin:18px 0 6px;break-after:avoid}
+p{margin:.5rem 0}
+code{font-family:var(--f-mono);font-size:.88em;background:var(--code-bg);padding:.05em .3em;border-radius:3px}
+pre{font-family:var(--f-mono);font-size:.82rem;line-height:1.5;background:var(--code-bg);padding:11px 14px;border-radius:4px;margin:.7rem 0;white-space:pre-wrap;break-inside:avoid}
+pre code{background:none;padding:0}
+.c{color:var(--muted)} .ok{color:var(--green)} .ko{color:var(--red)}
+.env{border-left:3px solid var(--navy);background:var(--navy-soft);padding:9px 14px;margin:14px 0;border-radius:0 4px 4px 0;break-inside:avoid}
+.env>.tag{font-family:var(--f-display);font-weight:700;display:block;margin-bottom:2px}
+.env>.tag em{font-weight:400}
+.env.prop{background:transparent;border-color:var(--ink)}
+.env.piege{border-color:var(--red);background:var(--red-soft)} .env.piege>.tag{color:var(--red)}
+.env.ml{border-color:var(--green);background:var(--green-soft)} .env.ml>.tag{color:var(--green)}
+.clair{color:var(--muted);font-size:.95rem} .clair b{color:var(--ink)}
+.ph{color:var(--navy);font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:10px 0;break-inside:avoid;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--ink)}
+details{border:1px solid var(--rule);border-radius:4px;margin:10px 0;break-inside:avoid}
+summary{padding:8px 12px;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+details .body{padding:0 14px 8px;border-top:1px solid var(--rule)}
+.lvl{font-weight:400;font-size:.78rem;color:var(--muted);margin-left:.6rem}
+.recap{counter-reset:r;list-style:none;padding:0}
+.recap li{counter-increment:r;display:grid;grid-template-columns:1.8rem 1fr;gap:.3rem;padding:6px 0;border-bottom:1px solid var(--rule);break-inside:avoid}
+.recap li::before{content:counter(r);font-family:var(--f-display);font-weight:700;color:var(--navy);font-size:1.1rem}
+footer{margin-top:30px;padding-top:10px;border-top:2px solid var(--ink);font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow"><span>F1 · DAY1 · WEEK3</span><span>Semaine 3 · Jour 1 · Fiche 1</span><span>Parcours AI/ML Engineer</span><span>Lundi 26 octobre 2026</span></div>
+  <h1>Les stats du Machine Learning, appliquées à ExamPredict AI</h1>
+  <p class="lead">Moyenne, médiane, écart-type, corrélation, vecteurs et matrices, puis une première prédiction testée honnêtement par backtesting. Chaque notion est énoncée, expliquée « en clair », puis appliquée à ton projet.</p>
+  <nav class="toc"><ol>
+    <li>Pourquoi des stats avant le ML</li><li>Moyenne et médiane</li><li>Écart-type</li><li>Corrélation</li>
+    <li>Vecteurs, matrices, X et y</li><li>Le réflexe describe / corr</li><li>ExamPredict : la matrice des concepts</li>
+    <li>ExamPredict : prédire 2027</li><li>Qualité des données</li><li>Exercices corrigés</li><li>À savoir par cœur</li>
+  </ol></nav>
+</header>
+
+<h2><span class="num">1.</span>Pourquoi des stats avant le ML</h2>
+<p>Un modèle de Machine Learning apprend à partir de données. S'il apprend sur des données qu'on ne comprend pas (valeurs bizarres, colonnes inutiles, trop peu d'exemples), il prédit faux, sans le dire.</p>
+<div class="env ml"><span class="tag">Dans le métier</span>
+<p>Avant d'entraîner quoi que ce soit, un ingénieur ML <b>regarde</b> ses données : il les résume en quelques chiffres. C'est l'<b>analyse exploratoire</b> <span class="ph">(a-na-lize èks-plo-ra-twar)</span>, souvent appelée EDA.</p></div>
+
+<h2><span class="num">2.</span>Moyenne et médiane</h2>
+<div class="env"><span class="tag">Définition 2.1 <em>(moyenne)</em></span>
+<p>La <b>moyenne</b> de n valeurs est leur somme divisée par n.</p>
+<p class="clair"><b>En clair :</b> c'est le <b>partage équitable</b>. Tout le monde met ses points dans un pot commun, puis on les repartage pareil pour tous.</p></div>
+<div class="env"><span class="tag">Définition 2.2 <em>(médiane)</em></span>
+<p>La <b>médiane</b> est la valeur qui sépare les données rangées dans l'ordre en deux moitiés égales. Pour un nombre pair de valeurs, c'est la moyenne des deux valeurs centrales.</p>
+<p class="clair"><b>En clair :</b> c'est l'élève qui est <b>pile au milieu de la file</b>.</p></div>
+<pre><code>notes : 10, 12, 14, 16, 0        <span class="c"># un élève absent a eu 0</span>
+moyenne = 52 / 5 = <span class="ko">10.4</span>          <span class="c"># le 0 tire tout le monde vers le bas</span>
+rangées : 0, 10, <b>12</b>, 14, 16  →  médiane = <span class="ok">12</span>
+
+df["maths"].mean()     <span class="c"># moyenne   (point mîne)</span>
+df["maths"].median()   <span class="c"># médiane   (point médiane)</span></code></pre>
+<div class="env prop"><span class="tag">Proposition 2.3</span>
+<p>La médiane résiste aux <b>valeurs extrêmes</b>, la moyenne non. Quand la moyenne et la médiane sont très différentes, il y a probablement des valeurs bizarres dans les données.</p></div>
+
+<h2><span class="num">3.</span>Écart-type</h2>
+<div class="env"><span class="tag">Définition 3.1 <em>(écart-type)</em></span>
+<p>L'<b>écart-type</b> mesure la distance typique entre les valeurs et leur moyenne. En anglais : <i>standard deviation</i>, d'où <code>.std()</code> <span class="ph">(point esse-té-dé)</span>.</p>
+<p class="clair"><b>En clair :</b> les élèves sont debout autour d'un arbre (la moyenne). Petit écart-type : ils sont <b>collés à l'arbre</b>. Grand écart-type : ils sont <b>éparpillés dans la cour</b>.</p></div>
+<table><thead><tr><th>Classe</th><th>Notes</th><th>Moyenne</th><th>Écart-type</th></tr></thead><tbody>
+<tr><td>A</td><td>9, 10, 10, 11</td><td>10</td><td>≈ 0,8 (serrés)</td></tr>
+<tr><td>B</td><td>0, 5, 15, 20</td><td>10</td><td>≈ 9,1 (éparpillés)</td></tr></tbody></table>
+<div class="env ml"><span class="tag">Dans le métier</span><p>Une colonne d'écart-type <b>0</b> a toujours la même valeur : elle n'apprend rien au modèle, on la supprime.</p></div>
+
+<h2><span class="num">4.</span>Corrélation</h2>
+<div class="env"><span class="tag">Définition 4.1 <em>(coefficient de corrélation)</em></span>
+<p>La <b>corrélation</b> entre deux colonnes est un nombre entre <b>−1</b> et <b>+1</b> qui mesure à quel point elles varient ensemble de façon linéaire.</p>
+<p class="clair"><b>En clair :</b> deux amis qui marchent. <b>+1</b> : main dans la main. <b>0</b> : chacun de son côté. <b>−1</b> : quand l'un avance, l'autre recule.</p></div>
+<pre><code>df.corr()        <span class="c"># toutes les corrélations entre colonnes  (point kor)</span>
+df.corr().round(2)</code></pre>
+<div class="env piege"><span class="tag">Piège 4.2 <em>(corrélation n'est pas causalité)</em></span>
+<p>Les ventes de glaces et les coups de soleil sont corrélés. Ce n'est pas la glace qui brûle : la vraie cause commune, c'est la <b>chaleur</b>.</p></div>
+<div class="env piege"><span class="tag">Piège 4.3 <em>(trop peu de points)</em></span>
+<p>Avec seulement 3 points, deux colonnes ont presque toujours l'air très corrélées (proche de ±1), <b>par hasard</b>. C'est ce qu'on a vu sur les 3 sujets du bac : des corrélations à 0,98 qui ne prouvent rien. Il faut beaucoup plus de données pour conclure.</p></div>
+
+<h2><span class="num">5.</span>Vecteurs, matrices, X et y</h2>
+<div class="env"><span class="tag">Définition 5.1</span>
+<p>Un <b>vecteur</b> est une liste ordonnée de nombres qui décrit un objet. Une <b>matrice</b> est un tableau de nombres : des vecteurs empilés.</p>
+<p class="clair"><b>En clair :</b> une ligne du tableau = la <b>carte d'identité en chiffres</b> d'un objet. Le tableau entier = la matrice.</p></div>
+<div class="env prop"><span class="tag">Convention du ML</span>
+<p><b>X</b> <span class="ph">(grand ixe)</span> = la matrice des informations qu'on <b>donne</b> au modèle. <b>y</b> <span class="ph">(petit i-grec)</span> = ce qu'il doit <b>deviner</b>.</p></div>
+<pre><code>X = df[["revision", "telephone"]]   <span class="c"># 2 colonnes d'entrée</span>
+y = df["maths"]                     <span class="c"># la cible</span>
+X.shape   <span class="c"># (lignes, colonnes)   (point chêpe)</span></code></pre>
+
+<h2><span class="num">6.</span>Le réflexe <code>describe</code> / <code>corr</code></h2>
+<p><code>df.describe()</code> <span class="ph">(point di-skraïbe)</span> donne d'un coup, pour chaque colonne numérique :</p>
+<table><thead><tr><th>Ligne</th><th>Sens</th></tr></thead><tbody>
+<tr><td><code>count</code></td><td>nombre de valeurs (repère les cases vides)</td></tr>
+<tr><td><code>mean</code> / <code>std</code></td><td>moyenne / écart-type</td></tr>
+<tr><td><code>min</code> / <code>max</code></td><td>plus petite / plus grande valeur (repère les valeurs impossibles)</td></tr>
+<tr><td><code>50%</code></td><td>la médiane</td></tr></tbody></table>
+
+<h2><span class="num">7.</span>ExamPredict : la matrice des concepts</h2>
+<p>Fichier <code>src/stats_concepts.py</code>. On lit les sujets du bac, on compte les concepts dans chacun, et on range le tout dans une matrice : <b>une ligne par examen, une colonne par concept</b>.</p>
+<pre><code>import pandas as pd
+pd.set_option("display.max_columns", None)       <span class="c"># afficher toutes les colonnes</span>
+from document_loader import load_documents        <span class="c"># ton propre code</span>
+from analyzer import find_concepts
+
+documents = load_documents("data/exams")          <span class="c"># {nom du fichier: texte}</span>
+lignes = {}
+for nom, texte in documents.items():
+    lignes[nom[:4]] = find_concepts(texte)         <span class="c"># "2024" -> {concept: nombre}</span>
+
+df = pd.DataFrame(lignes).T.fillna(0)             <span class="c"># .T retourne, fillna(0) remplit les vides</span>
+stats = pd.DataFrame({"moyenne": df.mean(), "mediane": df.median(), "ecart_type": df.std()})
+print(stats.round(1))
+print(df.corr().round(2))
+df.to_csv("data/concepts_par_examen.csv")</code></pre>
+<table><thead><tr><th>Concept</th><th>Moyenne</th><th>Médiane</th><th>Écart-type</th><th>Lecture</th></tr></thead><tbody>
+<tr><td>acide-base</td><td>60,3</td><td>49</td><td>24,1</td><td>le plus présent chaque année</td></tr>
+<tr><td>électricité</td><td>10,3</td><td>2</td><td>15,3</td><td>une seule grosse année : la médiane dit la vérité</td></tr>
+<tr><td>radioactivité</td><td>9,0</td><td>0</td><td>15,6</td><td>tombé une seule fois</td></tr>
+<tr><td>optique</td><td>4,3</td><td>4</td><td>1,5</td><td>peu, mais très régulier</td></tr></tbody></table>
+<div class="env prop"><span class="tag">Règle 7.1 <em>(l'ordre compte)</em></span><p>Python exécute le fichier de haut en bas. Un réglage comme <code>pd.set_option</code> placé après un <code>print</code> arrive trop tard pour lui : les réglages se mettent en haut.</p></div>
+
+<h2><span class="num">8.</span>ExamPredict : prédire 2027</h2>
+<p>Fichier <code>src/predire_2027.py</code>, sur <code>data/chapitres_bac.csv</code> : 66 exercices de 2010 à 2026, regroupés en 10 familles de chapitres.</p>
+<div class="env"><span class="tag">Définition 8.1 <em>(vote pondéré, décroissance exponentielle)</em></span>
+<p>Chaque exercice passé vote pour sa famille avec un poids <code>0.8 ** (année cible − 1 − année)</code>. L'année la plus récente pèse 1, la précédente 0,8, puis 0,64, etc. Le score d'une famille est la somme de ses votes.</p>
+<p class="clair"><b>En clair :</b> les années récentes parlent plus fort, parce que le programme et les habitudes des concepteurs évoluent.</p></div>
+<pre><code>def predire(df, annee_cible, k=6):
+    passe = df[df["annee"] &lt; annee_cible]                    <span class="c"># interdit de regarder l'avenir</span>
+    poids = 0.8 ** (annee_cible - 1 - passe["annee"])       <span class="c"># ** = puissance</span>
+    score = poids.groupby(passe["famille"]).sum()           <span class="c"># le dépouillement du vote</span>
+    return score.sort_values(ascending=False).head(k)</code></pre>
+<div class="env"><span class="tag">Définition 8.2 <em>(backtesting)</em></span>
+<p>Le <b>backtesting</b> <span class="ph">(bak-tèss-tingue)</span> teste une méthode sur le passé : on se place en 2021, on prédit 2022 sans le regarder, on compare avec la réalité, et on recommence chaque année.</p></div>
+<pre><code>prevu = set(predire(df, annee).index)                 <span class="c"># set = ensemble sans doublons</span>
+reel  = set(df[df["annee"] == annee]["famille"])
+touches = len(prevu &amp; reel)                            <span class="c"># &amp; = intersection : les prédictions réussies</span></code></pre>
+<table><thead><tr><th>Méthode</th><th>Chapitres réels prévus (2022 à 2026)</th></tr></thead><tbody>
+<tr><td>6 familles au hasard</td><td>≈ 60 %</td></tr>
+<tr><td>Comptage simple (tous les poids à 1)</td><td>20 / 26 = 77 %</td></tr>
+<tr><td><b>Vote pondéré 0,8</b></td><td><b>22 / 26 = 85 %</b></td></tr></tbody></table>
+<table><thead><tr><th>Prédiction 2027</th><th>Score</th></tr></thead><tbody>
+<tr><td>1. Mécanique</td><td>21,6 %</td></tr><tr><td>2. Chimie organique</td><td>19,9 %</td></tr>
+<tr><td>3. Électricité</td><td>12,5 %</td></tr><tr><td>4. Ondes et optique</td><td>11,2 %</td></tr>
+<tr><td>5. Acide-base</td><td>9,8 %</td></tr><tr><td>6. Cinétique chimique</td><td>8,4 %</td></tr></tbody></table>
+<div class="env piege"><span class="tag">Piège 8.3 <em>(le numéro de l'exercice)</em></span>
+<p>L'ordre des exercices ne suit aucune logique d'une année à l'autre. Prédire « exercice 1 = X » serait du hasard. On prédit l'<b>ensemble des chapitres</b> probables sur les deux jours.</p></div>
+<div class="env piege"><span class="tag">Piège 8.4 <em>(score ≠ probabilité)</em></span>
+<p>Le pourcentage est la <b>part du score</b> d'un chapitre, pas la probabilité exacte qu'il tombe. Il sert à <b>classer</b> les chapitres.</p></div>
+
+<h2><span class="num">9.</span>Qualité des données</h2>
+<div class="env piege"><span class="tag">Piège 9.1 <em>(hallucination)</em></span>
+<p>Les chapitres de 2010 à 2026 viennent de ChatGPT. Une IA peut <b>inventer</b> ou mélanger des faits : on appelle ça une <b>hallucination</b> <span class="ph">(a-lu-si-na-sion)</span>. Garbage in, garbage out.</p></div>
+<div class="env ml"><span class="tag">Dans le métier</span>
+<p>On <b>vérifie un échantillon</b> avec une autre source. Ici, les vrais PDF analysés par ton propre code ont servi de contrôle : 2025 jour 1 → Nucléaire ✓ (radioactivité = 27 dans le PDF). 2026 jour 1 reste suspect (le PDF parle beaucoup de gaz et de thermodynamique). 2014 et 2023 jour 1 sont aussi à vérifier.</p></div>
+<div class="env prop"><span class="tag">Éthique des données</span>
+<p>On respecte la volonté des sites : Labolycée et L'Étudiant s'opposent à la collecte automatique (robots.txt), donc pas de scraping. Les chapitres tombés chaque année sont une information publique.</p></div>
+
+<h2><span class="num">10.</span>Exercices corrigés</h2>
+<details open><summary>Exercice 1 <span class="lvl">★ médiane</span></summary><div class="body">
+<p>Notes : 2, 3, 4, 100. Moyenne ou médiane : laquelle décrit le mieux la classe ?</p>
+<p><b>Corrigé.</b> Moyenne = 109 / 4 = 27,25 ; médiane = (3 + 4) / 2 = 3,5. La médiane décrit mieux la classe : le 100 est une valeur extrême (Prop. 2.3).</p></div></details>
+<details open><summary>Exercice 2 <span class="lvl">★ écart-type</span></summary><div class="body">
+<p>Deux concepts ont la même moyenne de 10 apparitions. A a un écart-type de 1, B de 12. Lequel réviser en priorité ?</p>
+<p><b>Corrigé.</b> A : il tombe à peu près autant <b>chaque année</b>, il est fiable. B tombe par à-coups.</p></div></details>
+<details open><summary>Exercice 3 <span class="lvl">★★ corrélation</span></summary><div class="body">
+<p>Sur 3 sujets, corrélation(mouvement, forces) = 0,98. Peut-on conclure que ces chapitres tombent toujours ensemble ?</p>
+<p><b>Corrigé.</b> Pas avec certitude : 3 points sont trop peu (Piège 4.3). C'est plausible physiquement (un exercice de mécanique mêle les deux), mais il faut plus de sujets pour l'affirmer.</p></div></details>
+<details open><summary>Exercice 4 <span class="lvl">★★ backtesting</span></summary><div class="body">
+<p>Pourquoi la fonction <code>predire</code> filtre-t-elle <code>df["annee"] &lt; annee_cible</code> ?</p>
+<p><b>Corrigé.</b> Pour ne pas regarder l'avenir. Sinon, le backtest tricherait : la méthode « connaîtrait » déjà la réponse, et sa précision serait gonflée artificiellement.</p></div></details>
+<details open><summary>Exercice 5 <span class="lvl">★★★ poids</span></summary><div class="body">
+<p>Pour prédire 2027 avec un facteur 0,8, quel poids a un exercice de 2024 ?</p>
+<p><b>Corrigé.</b> 0,8 ** (2027 − 1 − 2024) = 0,8² = 0,64.</p></div></details>
+
+<h2><span class="num">11.</span>À savoir par cœur</h2>
+<ol class="recap">
+  <li><span>Avant d'entraîner un modèle, on regarde les données : <code>df.describe()</code> et <code>df.corr()</code>.</span></li>
+  <li><span><b>Moyenne</b> = partage équitable. <b>Médiane</b> = valeur du milieu, qui résiste aux valeurs extrêmes.</span></li>
+  <li><span><b>Écart-type</b> = valeurs serrées ou éparpillées autour de la moyenne. Écart-type 0 = colonne inutile.</span></li>
+  <li><span><b>Corrélation</b> entre −1 et +1. Ce n'est pas une preuve de cause, et elle n'est pas fiable avec trop peu de points.</span></li>
+  <li><span><b>Vecteur</b> = une ligne de nombres, <b>matrice</b> = le tableau. <b>X</b> = entrées, <b>y</b> = ce qu'on prédit.</span></li>
+  <li><span>Python lit de haut en bas : les réglages vont en haut du fichier.</span></li>
+  <li><span>Un <b>vote pondéré</b> donne plus de poids aux années récentes : <code>0.8 ** écart</code>.</span></li>
+  <li><span>Le <b>backtesting</b> teste une méthode sur le passé sans jamais regarder l'avenir. Toujours comparer au hasard.</span></li>
+  <li><span>Les données d'une IA peuvent être <b>hallucinées</b> : on vérifie un échantillon.</span></li>
+  <li><span>On respecte la volonté des sites (robots.txt) : pas de scraping là où il est refusé.</span></li>
+</ol>
+
+<footer>F1.DAY1.WEEK3 · Semaine 3 « Premier modèle de Machine Learning » · Prochaine fiche F1.DAY2.WEEK3 : scikit-learn, train/test et régression linéaire.</footer>
+</div>
+</body>
+</html>

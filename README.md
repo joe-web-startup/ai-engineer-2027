@@ -17,6 +17,9 @@ Je me forme au métier d'**AI/ML Engineer** et j'apprends en public : chaque jou
 | 1 | Day 4 | Terminal, Linux, venv et pip | [WEEK1/DAY4](WEEK1/DAY4/) |
 | 1 | Day 5 | Git, GitHub, qualité du code et tests | [WEEK1/DAY5](WEEK1/DAY5/) |
 | 1 | Day 6 | Évaluation, mini-projet final et synthèse | [WEEK1/DAY6](WEEK1/DAY6/) |
+| 2 | Day 1–4 | NumPy, Pandas, nettoyage, visualisation | [WEEK2](WEEK2/) |
+| 3 | Day 1 | Statistiques du ML appliquées à ExamPredict | [WEEK3/DAY1](WEEK3/DAY1/) |
+| 3 | Day 2 | Premier modèle de ML avec scikit-learn | [WEEK3/DAY2](WEEK3/DAY2/) |
 
 ## Structure
 ```
