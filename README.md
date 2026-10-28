@@ -20,6 +20,7 @@ Je me forme au métier d'**AI/ML Engineer** et j'apprends en public : chaque jou
 | 2 | Day 1–4 | NumPy, Pandas, nettoyage, visualisation | [WEEK2](WEEK2/) |
 | 3 | Day 1 | Statistiques du ML appliquées à ExamPredict | [WEEK3/DAY1](WEEK3/DAY1/) |
 | 3 | Day 2 | Premier modèle de ML avec scikit-learn | [WEEK3/DAY2](WEEK3/DAY2/) |
+| 3 | Day 3 | Classification : prédire OUI ou NON | [WEEK3/DAY3](WEEK3/DAY3/) |
 
 ## Structure
 ```

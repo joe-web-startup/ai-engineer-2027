@@ -1,0 +1,293 @@
+<title>F1.DAY3.WEEK3 · La classification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: polycopié de cours — colonne unique ~68ch, environnements numérotés (Définition, Proposition, Piège, Exemple) en marge gauche filetée */
+:root{
+  --paper:#fbfbfd; --ink:#1a1d2b; --muted:#5b6175; --rule:#d9dce6;
+  --navy:#1f3a6e; --navy-soft:#eaf0fa; --red:#a3283a; --red-soft:#fbecee;
+  --green:#2c6b4f; --green-soft:#e8f3ee; --code-bg:#f1f2f7;
+  --f-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#12141c; --ink:#e4e6ee; --muted:#9aa0b4; --rule:#2c3040;
+  --navy:#8fb0ec; --navy-soft:#1a2440; --red:#f08a99; --red-soft:#331a20;
+  --green:#7cc9a3; --green-soft:#16291f; --code-bg:#1b1e29; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12141c; --ink:#e4e6ee; --muted:#9aa0b4; --rule:#2c3040;
+  --navy:#8fb0ec; --navy-soft:#1a2440; --red:#f08a99; --red-soft:#331a20;
+  --green:#7cc9a3; --green-soft:#16291f; --code-bg:#1b1e29; color-scheme:dark}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:46rem;margin:0 auto}
+header{padding-block:48px 28px;border-bottom:2px solid var(--ink);margin-bottom:8px}
+.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(2rem,5vw,2.8rem);line-height:1.1;margin:.6rem 0 .5rem;text-wrap:balance}
+.lead{color:var(--muted);margin:0;max-width:60ch}
+nav.toc{margin-block:24px 8px;font-size:.92rem}
+nav.toc ol{margin:0;padding-left:1.4rem;columns:2 16rem;column-gap:2rem}
+nav.toc a{color:var(--navy);text-decoration:none}
+nav.toc a:hover,nav.toc a:focus-visible{text-decoration:underline}
+h2{font-family:var(--f-display);font-weight:600;font-size:1.65rem;margin:56px 0 12px;padding-top:12px;border-top:1px solid var(--rule);text-wrap:balance}
+h2 .num{color:var(--navy);margin-right:.5rem}
+h3{font-family:var(--f-display);font-weight:600;font-size:1.2rem;margin:28px 0 8px}
+p{margin:.6rem 0}
+code{font-family:var(--f-mono);font-size:.88em;background:var(--code-bg);padding:.08em .32em;border-radius:3px}
+pre{font-family:var(--f-mono);font-size:.86rem;line-height:1.55;background:var(--code-bg);padding:14px 16px;border-radius:4px;overflow-x:auto;margin:.8rem 0}
+pre code{background:none;padding:0;font-size:inherit}
+.c{color:var(--muted)}
+.ok{color:var(--green)} .ko{color:var(--red)}
+
+.env{border-left:3px solid var(--navy);background:var(--navy-soft);padding:12px 16px 12px 18px;margin:18px 0;border-radius:0 4px 4px 0}
+.env > .tag{font-family:var(--f-display);font-weight:700;font-size:1.02rem;display:block;margin-bottom:2px}
+.env > .tag em{font-weight:400}
+.env p:last-child,.env pre:last-child{margin-bottom:0}
+.env.prop{border-color:var(--ink);background:transparent;border-left-width:3px}
+.env.piege{border-color:var(--red);background:var(--red-soft)}
+.env.piege > .tag{color:var(--red)}
+.env.ml{border-color:var(--green);background:var(--green-soft)}
+.env.ml > .tag{color:var(--green)}
+.clair{font-size:.95rem;color:var(--muted);margin-top:.3rem}
+.clair b{color:var(--ink)}
+
+.tbl{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--ink)}
+
+details{border:1px solid var(--rule);border-radius:4px;margin:14px 0;background:var(--paper)}
+summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;display:flex;gap:.6rem;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--navy);transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+summary:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+details .body{padding:0 16px 12px;border-top:1px solid var(--rule)}
+.lvl{font-weight:400;font-size:.8rem;color:var(--muted);margin-left:auto;white-space:nowrap}
+
+.recap{counter-reset:r;list-style:none;padding:0;margin:12px 0}
+.recap li{counter-increment:r;display:grid;grid-template-columns:2rem 1fr;gap:.4rem;padding:8px 0;border-bottom:1px solid var(--rule)}
+.recap li::before{content:counter(r);font-family:var(--f-display);font-weight:700;color:var(--navy);font-size:1.15rem;line-height:1.4}
+.recap li > *{min-width:0}
+footer{margin-top:56px;padding-top:14px;border-top:2px solid var(--ink);font-size:.82rem;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){summary::before{transition:none}}
+</style>
+<style>
+.env.meth{border-color:var(--green);background:transparent}
+.env.meth > .tag{color:var(--green)}
+.env.rq{border-color:var(--rule);background:transparent}
+.cm td,.cm th{text-align:center}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow"><span>F1 · DAY3 · WEEK3</span><span>Mois 1 · Semaine 3 · Jour 3</span><span>Parcours AI/ML Engineer</span></div>
+  <h1>La classification : prédire OUI ou NON</h1>
+  <p class="lead">Passer d'un modèle qui prédit un nombre à un modèle qui tranche entre deux catégories. La régression logistique, les probabilités, la matrice de confusion, l'accuracy, la precision et le recall, appliqués à la question « ce chapitre va-t-il tomber au bac 2027 ? ».</p>
+  <nav class="toc" aria-label="Sommaire">
+    <ol>
+      <li><a href="#s1">Régression ou classification</a></li>
+      <li><a href="#s2">Poser le problème ExamPredict</a></li>
+      <li><a href="#s3">La régression logistique</a></li>
+      <li><a href="#s4">La matrice de confusion</a></li>
+      <li><a href="#s5">Accuracy, precision, recall</a></li>
+      <li><a href="#s6">Baseline et classes déséquilibrées</a></li>
+      <li><a href="#s7">Le seuil de décision</a></li>
+      <li><a href="#s8">Résultats d'ExamPredict</a></li>
+      <li><a href="#s9">La recette complète</a></li>
+      <li><a href="#s10">Exercices corrigés</a></li>
+      <li><a href="#s11">À savoir par cœur</a></li>
+    </ol>
+  </nav>
+</header>
+
+<h2 id="s1"><span class="num">1.</span>Régression ou classification</h2>
+<div class="env">
+  <span class="tag">Définition 1.1 <em>(apprentissage supervisé)</em></span>
+  <p>Un modèle <b>supervisé</b> apprend une règle à partir d'exemples dont on connaît déjà la réponse : des entrées <b>X</b> (les features) et une cible <b>y</b>. On distingue deux familles, selon la nature de y.</p>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th></th><th>Régression</th><th>Classification</th></tr></thead>
+  <tbody>
+    <tr><td>La cible y est</td><td>un <b>nombre</b> continu</td><td>une <b>catégorie</b> (0/1, spam/non-spam…)</td></tr>
+    <tr><td>Exemple ExamPredict</td><td>« 1,4 exercice de mécanique » (Day 2)</td><td>« mécanique : tombe (1) ou non (0) » (Day 3)</td></tr>
+    <tr><td>Modèle de base</td><td><code>LinearRegression</code></td><td><code>LogisticRegression</code></td></tr>
+    <tr><td>Mesure d'erreur</td><td>MAE (erreur moyenne)</td><td>accuracy, precision, recall</td></tr>
+  </tbody>
+</table></div>
+<div class="env rq">
+  <span class="tag">Remarque 1.2</span>
+  <p>Quand il n'y a que deux catégories, on parle de classification <b>binaire</b>. Par convention, la classe « intéressante » (fraude, malade, chapitre tombé) est notée <b>1</b>, ou <b>positive</b>.</p>
+</div>
+
+<h2 id="s2"><span class="num">2.</span>Poser le problème ExamPredict</h2>
+<div class="env meth">
+  <span class="tag">Méthode 2.1 <em>(construire X et y)</em></span>
+  <p>Pour chaque année et chaque chapitre :</p>
+  <p>• <b>y</b> = 1 si le chapitre est tombé cette année, 0 sinon ;<br>
+     • <b>X</b> = trois features : <code>avant_1</code>, <code>avant_2</code>, <code>avant_3</code>, qui valent 1 si le chapitre est tombé 1, 2 ou 3 ans plus tôt.</p>
+  <pre><code>tombe = (pd.crosstab(df["annee"], df["famille"]) > 0).astype(int)   <span class="c"># table années × chapitres, en 0/1</span></code></pre>
+</div>
+<div class="env prop">
+  <span class="tag">Proposition 2.2 <em>(coupe dans le temps)</em></span>
+  <p>Quand les données suivent le temps, le jeu de test doit être <b>postérieur</b> au jeu d'entraînement : on apprend sur 2013–2023, on teste sur 2024–2026. Mélanger les années au hasard ferait « voir le futur » au modèle : c'est une fuite de données.</p>
+</div>
+
+<h2 id="s3"><span class="num">3.</span>La régression logistique</h2>
+<div class="env">
+  <span class="tag">Définition 3.1</span>
+  <p>La régression logistique calcule d'abord un score linéaire, comme la régression linéaire :</p>
+  <pre><code>z = w₁·avant_1 + w₂·avant_2 + w₃·avant_3 + b</code></pre>
+  <p>puis le transforme en probabilité avec la <b>fonction sigmoïde</b> :</p>
+  <pre><code>p = σ(z) = 1 / (1 + e^(−z))</code></pre>
+  <p>Les poids <code>w</code> et le biais <code>b</code> sont appris par <code>model.fit(X, y)</code>.</p>
+</div>
+<div class="env prop">
+  <span class="tag">Proposition 3.2 <em>(propriétés de la sigmoïde)</em></span>
+  <p>σ(z) est toujours strictement comprise entre 0 et 1 : c'est une probabilité. σ(0) = 0,5 ; σ(2) ≈ 0,88 ; σ(−2) ≈ 0,12. Plus z est grand, plus le modèle est sûr du OUI.</p>
+  <p class="clair"><b>En clair :</b> la sigmoïde est un « écraseur » qui transforme n'importe quel score en pourcentage de confiance.</p>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th>Méthode</th><th>Renvoie</th><th>Exemple</th></tr></thead>
+  <tbody>
+    <tr><td><code>model.predict(X)</code></td><td>la classe : 0 ou 1 (seuil 0,5)</td><td><code>[1, 0, 1]</code></td></tr>
+    <tr><td><code>model.predict_proba(X)[:, 1]</code></td><td>la probabilité de la classe 1</td><td><code>[0.76, 0.41, 0.53]</code></td></tr>
+    <tr><td><code>model.coef_</code>, <code>model.intercept_</code></td><td>les poids w et le biais b appris</td><td></td></tr>
+  </tbody>
+</table></div>
+<p class="clair"><code>predict_proba</code> renvoie deux colonnes : la probabilité de 0, puis celle de 1. <code>[:, 1]</code> prend toutes les lignes de la deuxième colonne.</p>
+
+<h2 id="s4"><span class="num">4.</span>La matrice de confusion</h2>
+<div class="env">
+  <span class="tag">Définition 4.1</span>
+  <p>La matrice de confusion compte les réponses du modèle sur le jeu de test, selon la vérité et selon la prédiction. Dans scikit-learn, les <b>lignes</b> sont la vérité et les <b>colonnes</b> la prédiction :</p>
+  <div class="tbl cm"><table>
+    <thead><tr><th></th><th>prédit 0</th><th>prédit 1</th></tr></thead>
+    <tbody>
+      <tr><th>vrai 0</th><td><b>VN</b> · vrai négatif ✅</td><td><b>FP</b> · faux positif (fausse alerte) ❌</td></tr>
+      <tr><th>vrai 1</th><td><b>FN</b> · faux négatif (raté) ❌</td><td><b>VP</b> · vrai positif ✅</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<h2 id="s5"><span class="num">5.</span>Accuracy, precision, recall</h2>
+<div class="env">
+  <span class="tag">Définition 5.1 <em>(les trois métriques)</em></span>
+  <div class="tbl"><table>
+    <thead><tr><th>Métrique</th><th>Formule</th><th>Question posée</th></tr></thead>
+    <tbody>
+      <tr><td><b>Accuracy</b></td><td>(VP + VN) / total</td><td>Quelle part de réponses justes ?</td></tr>
+      <tr><td><b>Precision</b></td><td>VP / (VP + FP)</td><td>Quand il dit OUI, a-t-il raison ? (peu de fausses alertes)</td></tr>
+      <tr><td><b>Recall</b> (rappel)</td><td>VP / (VP + FN)</td><td>Parmi les vrais OUI, combien en trouve-t-il ? (peu de ratés)</td></tr>
+      <tr><td><b>F1</b></td><td>2·P·R / (P + R)</td><td>Un compromis entre precision et recall</td></tr>
+    </tbody>
+  </table></div>
+</div>
+<div class="env meth">
+  <span class="tag">Méthode 5.2 <em>(quelle métrique privilégier ?)</em></span>
+  <p>• Une <b>fausse alerte coûte cher</b> (classer un vrai mail en spam) → privilégier la <b>precision</b>.<br>
+     • Un <b>raté coûte cher</b> (ne pas détecter une maladie, une fraude) → privilégier le <b>recall</b>.<br>
+     • Pour ExamPredict, rater un chapitre qui tombe est pire que réviser un chapitre en trop → le <b>recall</b> compte davantage.</p>
+</div>
+
+<h2 id="s6"><span class="num">6.</span>Baseline et classes déséquilibrées</h2>
+<div class="env prop">
+  <span class="tag">Proposition 6.1 <em>(la baseline)</em></span>
+  <p>Un modèle n'a de valeur que s'il bat la <b>baseline</b> : répondre toujours la classe la plus fréquente du jeu d'entraînement (<code>y_train.mode()[0]</code>).</p>
+</div>
+<div class="env piege">
+  <span class="tag">Piège 6.2 <em>(l'accuracy qui ment)</em></span>
+  <p>Sur 1 000 transactions dont 20 fraudes, un modèle qui répond toujours « pas fraude » obtient <b>98 % d'accuracy</b>… et un <b>recall de 0</b> : il ne détecte aucune fraude. Quand les classes sont déséquilibrées, on ne regarde jamais l'accuracy seule.</p>
+</div>
+
+<h2 id="s7"><span class="num">7.</span>Le seuil de décision</h2>
+<div class="env prop">
+  <span class="tag">Proposition 7.1 <em>(compromis precision / recall)</em></span>
+  <p>Par défaut, <code>predict</code> répond 1 si la probabilité dépasse 0,5. <b>Baisser le seuil</b> fait dire OUI plus souvent : le recall monte, la precision baisse. <b>Monter le seuil</b> fait l'inverse.</p>
+  <pre><code>proba = model.predict_proba(X_test)[:, 1]
+pred_prudent = (proba >= 0.3).astype(int)     <span class="c"># plus de OUI : on rate moins de chapitres</span></code></pre>
+</div>
+
+<h2 id="s8"><span class="num">8.</span>Résultats d'ExamPredict (physique-chimie)</h2>
+<div class="tbl cm"><table>
+  <thead><tr><th>Test 2024–2026 (30 cas)</th><th>prédit 0</th><th>prédit 1</th></tr></thead>
+  <tbody>
+    <tr><th>vrai 0</th><td>11</td><td>4</td></tr>
+    <tr><th>vrai 1</th><td>5</td><td>10</td></tr>
+  </tbody>
+</table></div>
+<div class="tbl"><table>
+  <thead><tr><th>Mesure</th><th>Calcul</th><th>Valeur</th></tr></thead>
+  <tbody>
+    <tr><td>Accuracy</td><td>(11 + 10) / 30</td><td>0,70</td></tr>
+    <tr><td>Precision</td><td>10 / (10 + 4)</td><td>0,71</td></tr>
+    <tr><td>Recall</td><td>10 / (10 + 5)</td><td>0,67</td></tr>
+    <tr><td>F1</td><td>2 × 0,71 × 0,67 / (0,71 + 0,67)</td><td>0,69</td></tr>
+    <tr><td>Baseline (toujours 0)</td><td>15 / 30</td><td>0,50</td></tr>
+  </tbody>
+</table></div>
+<p>Le modèle bat la baseline de 20 points. Pour 2027, il place la mécanique et la chimie organique en tête (76 %), car elles sont tombées les trois années précédentes.</p>
+<div class="env rq">
+  <span class="tag">Remarque 8.1 <em>(limite honnête)</em></span>
+  <p>30 cas de test, c'est peu : un ou deux chapitres de plus ou de moins changent nettement les scores. Le résultat est un signal encourageant, pas une preuve. Le remède : plus d'années, plus de matières, plus de sessions (centres étrangers, jour 2).</p>
+</div>
+
+<h2 id="s9"><span class="num">9.</span>La recette complète</h2>
+<pre><code>from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
+
+train = data["annee"] &lt; 2024                    <span class="c"># 1. coupe dans le temps</span>
+test = data["annee"] >= 2024
+
+model = LogisticRegression()                    <span class="c"># 2. choisir le modèle</span>
+model.fit(X[train], y[train])                   <span class="c"># 3. apprendre sur le passé</span>
+pred = model.predict(X[test])                   <span class="c"># 4. prédire le test</span>
+
+print(confusion_matrix(y[test], pred))          <span class="c"># 5. mesurer</span>
+print(accuracy_score(y[test], pred), precision_score(y[test], pred), recall_score(y[test], pred))
+
+baseline = y[train].mode()[0]                   <span class="c"># 6. comparer au pif</span>
+print(accuracy_score(y[test], [baseline] * test.sum()))
+
+model.fit(X, y)                                 <span class="c"># 7. réentraîner sur tout, puis prédire le futur</span>
+proba_2027 = model.predict_proba(X_futur)[:, 1]</code></pre>
+
+<h2 id="s10"><span class="num">10.</span>Exercices corrigés</h2>
+<details><summary>Exercice 1 · Lire une matrice <span class="lvl">★</span></summary><div class="body">
+<p>Matrice <code>[[50, 10], [5, 35]]</code>. Calculer l'accuracy, la precision et le recall.</p>
+<p><b>Corrigé.</b> VN = 50, FP = 10, FN = 5, VP = 35. Accuracy = 85 / 100 = 0,85. Precision = 35 / 45 ≈ 0,78. Recall = 35 / 40 = 0,875.</p>
+</div></details>
+<details><summary>Exercice 2 · Régression ou classification ? <span class="lvl">★</span></summary><div class="body">
+<p>a) le prix d'un appartement ; b) un mail est-il un spam ; c) la note au bac ; d) un patient est-il malade.</p>
+<p><b>Corrigé.</b> a) régression ; b) classification ; c) régression ; d) classification.</p>
+</div></details>
+<details><summary>Exercice 3 · Le piège du déséquilibre <span class="lvl">★★</span></summary><div class="body">
+<p>Sur 200 patients, 10 sont malades. Un modèle répond toujours « sain ». Accuracy ? Recall ? Conclusion ?</p>
+<p><b>Corrigé.</b> Accuracy = 190 / 200 = 0,95. Recall = 0 / 10 = 0. Le modèle est inutile malgré ses 95 % : il ne détecte aucun malade.</p>
+</div></details>
+<details><summary>Exercice 4 · Effet du seuil <span class="lvl">★★</span></summary><div class="body">
+<p>On passe le seuil de 0,5 à 0,3. Que deviennent, en général, la precision et le recall ? Pourquoi est-ce pertinent pour ExamPredict ?</p>
+<p><b>Corrigé.</b> Le modèle dit OUI plus souvent : le recall augmente, la precision diminue. Pour un élève, rater un chapitre qui tombe coûte plus cher que réviser un chapitre en trop : un seuil plus bas est justifié.</p>
+</div></details>
+<details><summary>Exercice 5 · La sigmoïde <span class="lvl">★★★</span></summary><div class="body">
+<p>Un modèle appris donne z = 1,5 × avant_1 + 0,5 × avant_2 − 1. Calculer z et la probabilité pour un chapitre tombé l'an dernier mais pas il y a deux ans.</p>
+<p><b>Corrigé.</b> z = 1,5 × 1 + 0,5 × 0 − 1 = 0,5. p = 1 / (1 + e^(−0,5)) ≈ 0,62. Le modèle prédit OUI, avec 62 % de confiance.</p>
+</div></details>
+
+<h2 id="s11"><span class="num">11.</span>À savoir par cœur</h2>
+<ol class="recap">
+  <li><span>Régression = prédire un nombre. Classification = prédire une catégorie.</span></li>
+  <li><span>Données dans le temps : on entraîne sur le passé et on teste sur le futur.</span></li>
+  <li><span>Régression logistique : un score linéaire z, puis la sigmoïde 1 / (1 + e^(−z)), qui donne une probabilité.</span></li>
+  <li><span><code>predict</code> donne 0 ou 1. <code>predict_proba(X)[:, 1]</code> donne la probabilité de 1.</span></li>
+  <li><span>Matrice de confusion : lignes = vérité, colonnes = prédiction. VN, FP, FN, VP.</span></li>
+  <li><span>Accuracy = (VP + VN) / total. Precision = VP / (VP + FP). Recall = VP / (VP + FN).</span></li>
+  <li><span>Fausses alertes coûteuses → precision. Ratés coûteux → recall.</span></li>
+  <li><span>Toujours comparer à la baseline. Avec des classes déséquilibrées, l'accuracy seule ment.</span></li>
+  <li><span>Baisser le seuil fait monter le recall et baisser la precision.</span></li>
+</ol>
+
+<footer>F1.DAY3.WEEK3 · Semaine 3 · Appliqué à ExamPredict AI (<code>src/classer_2027.py</code>).</footer>
+</div>
